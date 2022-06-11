@@ -1,0 +1,20 @@
+﻿using UnityEngine;
+
+public class Door : MonoBehaviour
+{
+    
+    [SerializeField] private Transform door;
+    [SerializeField] private Sprite mid, top;
+    public bool isOpen;
+    public void Unlock()
+    {
+        isOpen = true;
+        GetComponent<SpriteRenderer>().sprite = mid;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = top;
+    }
+    public void Teleport (GameObject player)
+    {
+        var position = door.position;
+        player.transform.position = new Vector3(position.x, position.y, player.transform.position.z);
+    }
+}
